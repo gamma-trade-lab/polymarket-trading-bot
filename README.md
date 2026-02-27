@@ -15,6 +15,12 @@ This is the Python version of the Polymarket Copy Trading Bot. It automatically 
 4. **Execute Orders** - Places matching orders on Polymarket using your wallet
 5. **Track Performance** - Logs complete trade activity to console and daily log files
 
+## Best Practice
+
+https://github.com/user-attachments/assets/82f5404a-24b3-4e0e-8a8a-ef3264e4359f
+
+I've decided to copy Vidarx's trades.Looking at his profit curve, it just keeps going up over the whole time period. He mostly trades on very short time frames like 15-minute or 5-minute charts — these markets are super volatile and move fast.His strategy is really unique, and at one point his trades completely beat (or outperformed) Gabagool's trading. But now Gabagool's style seems almost dead or not working anymore.In short: by copying him in the BTC 5-minute market during one cycle (one trading period), I made $256 in profit.
+
 ## Quick Start
 
 ### Prerequisites
@@ -43,84 +49,8 @@ python -m src.scripts.setup.system_status
 python -m src.main
 ```
 
-📖 **For detailed setup instructions, see [Getting Started Guide](docs/GETTING_STARTED.md)**
-
-## Available Commands
-
-### Setup & Configuration
-```bash
-python -m src.scripts.setup.setup              # Interactive setup wizard
-python -m src.scripts.setup.system_status       # Verify system status and configuration
-python -m src.scripts.setup.help              # Display all available commands
-```
-
-### Main Bot
-```bash
-python -m src.main                       # Start the copy trading bot
-```
-
-### Wallet Management
-```bash
-python -m src.scripts.wallet.check_proxy_wallet        # Check proxy and main wallet activity
-python -m src.scripts.wallet.check_both_wallets        # Compare two wallet addresses
-python -m src.scripts.wallet.check_my_stats            # View wallet statistics
-python -m src.scripts.wallet.check_recent_activity     # Check recent trading activity
-python -m src.scripts.wallet.check_positions_detailed  # View detailed position information
-python -m src.scripts.wallet.check_pnl_discrepancy     # Check P&L discrepancy analysis
-python -m src.scripts.wallet.verify_allowance         # Verify USDC token allowance
-python -m src.scripts.wallet.check_allowance          # Check and set USDC allowance
-python -m src.scripts.wallet.set_token_allowance      # Set ERC1155 token allowance
-python -m src.scripts.wallet.find_my_eoa              # Find and analyze EOA wallet
-python -m src.scripts.wallet.find_gnosis_safe_proxy   # Find Gnosis Safe proxy wallet
-```
-
-### Position Management (⚠️ Requires CLOB Client Implementation)
-```bash
-# Note: These scripts exist but require full CLOB client implementation
-python -m src.scripts.position.manual_sell            # Manually sell a specific position
-python -m src.scripts.position.sell_large_positions   # Sell large positions
-python -m src.scripts.position.close_stale_positions # Close stale/old positions
-python -m src.scripts.position.close_resolved_positions # Close resolved positions
-python -m src.scripts.position.redeem_resolved_positions # Redeem resolved positions
-```
-
-### Trader Research & Analysis
-```bash
-python -m src.scripts.research.find_best_traders      # Find best performing traders
-python -m src.scripts.research.find_low_risk_traders  # Find low-risk traders with good metrics
-python -m src.scripts.research.scan_best_traders      # Scan and analyze top traders
-python -m src.scripts.research.scan_traders_from_markets # Scan traders from active markets
-```
-
-### Simulation & Backtesting
-```bash
-python -m src.scripts.simulation.simulate_profitability # Simulate profitability for a trader
-python -m src.scripts.simulation.simulate_profitability_old # Old simulation logic
-python -m src.scripts.simulation.run_simulations        # Run comprehensive batch simulations
-python -m src.scripts.simulation.compare_results        # Compare simulation results
-python -m src.scripts.simulation.aggregate_results      # Aggregate trading results across strategies
-python -m src.scripts.simulation.audit_copy_trading     # Audit copy trading algorithm
-python -m src.scripts.simulation.fetch_historical_trades # Fetch and cache historical trade data
-```
 
 ## Configuration
-
-### Essential Variables
-
-Create a `.env` file with the following variables:
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `USER_ADDRESSES` | Traders to copy (comma-separated) | `'0xABC..., 0xDEF...'` |
-| `PROXY_WALLET` | Your Polygon wallet address | `'0x123...'` |
-| `PRIVATE_KEY` | Wallet private key (no 0x prefix) | `'abc123...'` |
-| `RPC_URL` | Polygon RPC endpoint | `'https://polygon...'` |
-| `USDC_CONTRACT_ADDRESS` | USDC contract on Polygon | `'0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'` |
-| `CLOB_HTTP_URL` | Polymarket CLOB API URL | `'https://clob.polymarket.com'` |
-| `TRADE_MULTIPLIER` | Position size multiplier (default: 1.0) | `2.0` |
-| `FETCH_INTERVAL` | Check interval in seconds (default: 1) | `1` |
-| `TRADE_AGGREGATION_ENABLED` | Enable trade aggregation (default: false) | `true` |
-| `TRADE_AGGREGATION_WINDOW_SECONDS` | Aggregation window (default: 30) | `30` |
 
 ### Finding Traders
 
@@ -140,15 +70,6 @@ Create a `.env` file with the following variables:
 - **Log-Only Architecture** - No database required; trade flow is processed in-memory and logged
 - **Price Protection** - Built-in slippage checks to avoid unfavorable fills
 - **Colored Logging** - Beautiful colored console output for better monitoring
-
-## Key Differences from TypeScript Version
-
-- **Async/Await**: Python uses `asyncio` for async operations
-- **Type System**: Python uses type hints instead of TypeScript types
-- **Web3**: Uses `web3.py` instead of `ethers.js`
-- **HTTP Client**: Uses `httpx` instead of `axios`
-- **Logging**: Uses `colorama` for colored output
-- **Package Management**: Uses `pip` and `requirements.txt` instead of `npm` and `package.json`
 
 ## Important Notes
 
@@ -170,32 +91,6 @@ The Polymarket CLOB (Central Limit Order Book) client is a critical component th
 - **Diversify** - Don't copy just one trader; track multiple strategies
 - **Monitor regularly** - Check bot logs daily to ensure proper execution
 - **No guarantees** - Past performance doesn't guarantee future results
-
-### Best Practices
-
-1. Use a dedicated wallet separate from your main funds
-2. Only allocate capital you can afford to lose
-3. Research traders thoroughly before copying
-4. Set up monitoring and alerts
-5. Know how to stop the bot quickly (Ctrl+C)
-6. Run system status check before starting: `python -m src.scripts.setup.system_status`
-
-## Troubleshooting
-
-### Common Issues
-
-**Missing environment variables** → Run `python -m src.scripts.setup.setup` to create `.env` file
-
-**Bot not detecting trades** → Verify trader addresses and check recent activity
-
-**Insufficient balance** → Add USDC to wallet and ensure POL/MATIC for gas fees
-
-**CLOB client errors** → The CLOB client needs full implementation (see Important Notes above)
-
-**Import errors** → Make sure you're running from the project root directory
-
-**Run system status check:** `python -m src.scripts.setup.system_status`
-
 
 ## License
 
