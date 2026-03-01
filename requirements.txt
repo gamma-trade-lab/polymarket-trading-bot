@@ -16,7 +16,7 @@ py-clob-client>=0.34.5
 
 # Documentation generation
 markdown>=3.4.0
-# Optional PDF libraries (install one):
+# Optional PDF libraries (install):
 # xhtml2pdf>=0.2.11  # Recommended for Windows
 # pdfkit>=1.0.0      # Requires wkhtmltopdf binary
 # weasyprint>=60.0   # Requires GTK on Windows
