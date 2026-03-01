@@ -23,7 +23,7 @@ AUDIT_STARTING_CAPITAL=${AUDIT_STARTING_CAPITAL:-1000}
 
 # Check if AUDIT_ADDRESSES or USER_ADDRESSES is set
 if [ -z "$AUDIT_ADDRESSES" ] && [ -z "$USER_ADDRESSES" ]; then
-    echo -e "${YELLOW}⚠️  No AUDIT_ADDRESSES or USER_ADDRESSES environment variable found${NC}"
+    echo -e "${YELLOW}  No AUDIT_ADDRESSES or USER_ADDRESSES environment variable found${NC}"
     echo ""
     echo -e "${CYAN}Please set trader addresses to audit:${NC}"
     echo ""
