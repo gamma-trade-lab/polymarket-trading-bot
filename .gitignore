@@ -32,7 +32,6 @@ Thumbs.db
 
 # Optional lock files (keep package-lock.json for CI/CD)
 yarn.lock
-pnpm-lock.yaml
 
 # Coverage reports
 coverage/
