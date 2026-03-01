@@ -257,7 +257,7 @@ async def trade_executor(clob_client: Any, trade_queue: asyncio.Queue) -> None:
                     # Only aggregate BUY trades below minimum threshold
                     if trade.get('side') == 'BUY' and trade.get('usdcSize', 0) < TRADE_AGGREGATION_MIN_TOTAL_USD:
                         info(
-                            f"Adding ${trade.get('usdcSize', 0):.2f} {trade.get('side', 'BUY')} trade to aggregation buffer "
+                            f"Adding ${trade.get('usdcSize', 0):.2f} {trade.get('side', 'BUY')} trade to aggregation "
                             f"for {trade.get('slug') or trade.get('asset', 'unknown')}"
                         )
                         add_to_aggregation_buffer(trade)
