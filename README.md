@@ -1,4 +1,4 @@
-# Polymarket Trading Bot - Python Edition
+# Polymarket Trading Bot - Python
 
 > Automated copy trading bot for Polymarket that mirrors trades from top performers with intelligent position sizing and real-time execution.
 
