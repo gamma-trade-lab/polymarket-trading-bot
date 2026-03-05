@@ -98,7 +98,7 @@ The Polymarket CLOB (Central Limit Order Book) client is a critical component th
 
 ## Discover More Bots
 
-To see more profitable bots for traders, visit https://github.com/gamma-trade-lab/
+To see more profitable bots for traders, visit https://github.com/qntrade/
 
 
 
